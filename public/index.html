@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScopeDesk — Metasploit Module Atlas & Authorised Engagement Planner</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">◈</span> ScopeDesk</div>
+  <p class="tag">Every module in <strong>rapid7/metasploit-framework</strong>, searchable in seconds — plus an engagement planner that only builds check-first plans for hosts you are authorised to test.</p>
+  <div id="stats" class="stats"></div>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Find a module</h2>
+    <form id="searchForm" class="filters">
+      <input id="q" placeholder="Search name, description, CVE-2024-…, author… e.g. eternalblue, log4shell, http scanner" autocomplete="off">
+      <select id="type"><option value="">All types</option><option>exploit</option><option>auxiliary</option><option>post</option><option>payload</option><option>encoder</option><option>evasion</option><option>nop</option></select>
+      <select id="service"><option value="">Any service</option><option>http</option><option>https</option><option>smb</option><option>ssh</option><option>ftp</option><option>mysql</option><option>postgres</option><option>rdp</option></select>
+      <select id="minRank"><option value="">Any rank</option><option value="300">Normal+</option><option value="400">Good+</option><option value="500">Great+</option><option value="600">Excellent</option></select>
+      <label class="check"><input type="checkbox" id="checkOnly"> Has safe check()</label>
+      <select id="sort"><option value="rank">Sort: rank</option><option value="newest">Sort: newest disclosure</option><option value="updated">Sort: recently updated</option><option value="name">Sort: name</option></select>
+      <button>Search</button>
+    </form>
+    <p id="resultCount" class="muted"></p>
+    <div id="results"></div>
+    <div class="pager"><button id="prev">← Prev</button><span id="pageInfo"></span><button id="next">Next →</button></div>
+  </section>
+
+  <aside class="panel plan">
+    <h2>Engagement plan <span id="planCount" class="badge">0</span></h2>
+    <p class="muted">Add modules with <strong>+ Plan</strong>. Auxiliary modules and check-capable exploits only — exploits are exported as <code>check</code>, never <code>run</code>.</p>
+    <div id="planList" class="planlist"><em class="muted">No modules yet.</em></div>
+    <input id="client" placeholder="Client / engagement name">
+    <textarea id="hosts" rows="3" placeholder="In-scope hosts, one per line or comma separated — systems you own or have written permission to test"></textarea>
+    <textarea id="notes" rows="2" placeholder="Engagement notes (optional)"></textarea>
+    <label class="check"><input type="checkbox" id="authorized"> I confirm I own these systems or have written authorisation to test them</label>
+    <button id="buildPlan" class="primary">Build plan</button>
+    <p id="planError" class="error"></p>
+    <div id="planOut" hidden>
+      <h3>Resource script (.rc) — run in your own msfconsole</h3>
+      <pre id="rcOut"></pre><button data-dl="rc">Download .rc</button>
+      <h3>Engagement report (Markdown)</h3>
+      <pre id="reportOut"></pre><button data-dl="md">Download report.md</button>
+    </div>
+  </aside>
+</main>
+
+<div id="drawer" hidden><button id="closeDrawer">✕</button><div id="drawerBody"></div></div>
+<footer>Built on the open-source Metasploit Framework metadata (rapid7/metasploit-framework, 39.5k★). ScopeDesk plans and documents — it does not execute modules. Use only on systems you own or are authorised to test.</footer>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "description": "ScopeDesk \u2014 a searchable Metasploit module atlas and authorised engagement planner built on rapid7/metasploit-framework metadata",
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "name": "msf-scopedesk",
+  "private": true,
+  "scripts": {
+    "ingest": "node scripts/ingest.mjs",
+    "start": "node server.mjs",
+    "test": "node --test test/api.test.mjs"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}
