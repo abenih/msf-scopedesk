@@ -1,5 +1,7 @@
 # ScopeDesk
 
+**Live demo (GitHub Pages): https://abenih.github.io/msf-scopedesk/** — the Pages edition runs entirely in the browser (`docs/`); the Node server below is the self-hosted edition.
+
 A searchable atlas of every module in [rapid7/metasploit-framework](https://github.com/rapid7/metasploit-framework) plus an authorised engagement planner that exports check-first Metasploit resource scripts and Markdown engagement reports.
 
 ScopeDesk **plans and documents — it never executes modules.** Run exported `.rc` scripts only in your own `msfconsole`, only against systems you own or have written authorisation to test.
